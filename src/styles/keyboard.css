@@ -1,0 +1,93 @@
+/* Матрица клавиатуры калькулятора (23 клавиши, 5 колонок) */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(6px, 1.4vw, 10px);
+  padding: clamp(8px, 1.8vw, 14px);
+}
+
+.key {
+  min-height: clamp(38px, 6.5vh, 52px);
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: clamp(8px, 1.5vw, 12px);
+  font-size: clamp(0.95rem, 2.2vw, 1.2rem);
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: filter 0.12s ease, transform 0.08s ease;
+}
+
+.key:hover {
+  filter: brightness(1.07);
+}
+
+.key:active {
+  filter: brightness(0.93);
+  transform: scale(0.97);
+}
+
+.key--zero {
+  grid-column: span 2;
+}
+
+.key--eq {
+  grid-row: span 2;
+  background-color: #cf434a;
+}
+
+/* Все цифровые клавиши (включая запятую) — одним цветом */
+.key--num {
+  background-color: #5b8fa3;
+}
+
+/* Отдельный цвет для запятой */
+[data-action="decimal"] {
+  background-color: #346d3e;
+}
+
+/* Клавиши функций и операций — каждая своим цветом */
+[data-action="backspace"] {
+  background-color: #6b7f9e;
+}
+
+[data-action="clear-entry"] {
+  background-color: #8c6d82;
+}
+
+[data-action="clear"] {
+  background-color: #a36666;
+}
+
+[data-action="negate"] {
+  background-color: #5d8a82;
+}
+
+[data-action="sqrt"] {
+  background-color: #6e7d63;
+}
+
+[data-action="percent"] {
+  background-color: #8f7b56;
+}
+
+[data-action="reciprocal"] {
+  background-color: #5c7d8c;
+}
+
+[data-op="/"] {
+  background-color: #4f7b96;
+}
+
+[data-op="*"] {
+  background-color: #58729c;
+}
+
+[data-op="-"] {
+  background-color: #7d6b99;
+}
+
+[data-op="+"] {
+  background-color: #4b827d;
+}
