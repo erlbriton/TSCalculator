@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/styles/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tauri App</title>
+    <script type="module" src="/src/main.ts" defer></script>
+  </head>
+
+  <body>
+    <body>
+  <div class="titlebar" data-tauri-drag-region>
+    <span class="titlebar__title" data-tauri-drag-region>Калькулятор</span>
+
+    <div class="titlebar__controls">
+  <button type="button" id="win-minimize" aria-label="Свернуть"></button>
+  <button type="button" id="win-close" aria-label="Закрыть"></button>
+</div>
+  </div>
+
+  <main class="container">
+    <div class="toolbar">
+      <button type="button" id="btn-mode">Режим</button>
+      <button type="button" id="btn-style">Стиль</button>
+      <button type="button" id="btn-help">Справка</button>
+    </div>
+  </main>
+</body>
+    <main class="container">
+      <div class="toolbar">
+        <button type="button" id="btn-mode">Режим</button>
+        <button type="button" id="btn-style">Стиль</button>
+        <button type="button" id="btn-help">Справка</button>
+      </div>
+    
+    </main>
+  </body>
+</html>
