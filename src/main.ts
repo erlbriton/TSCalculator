@@ -14,6 +14,9 @@ document.getElementById("win-close")?.addEventListener("click", () => {
 let greetInputEl: HTMLInputElement | null;
 let greetMsgEl: HTMLElement | null;
 
+const THEME_STORAGE_KEY = "calculator-theme";
+type ThemeMode = "light" | "dark";
+
 async function greet() {
   if (greetMsgEl && greetInputEl) {
     // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
@@ -42,4 +45,30 @@ window.addEventListener("DOMContentLoaded", () => {
   if ((e.target as HTMLElement | null)?.closest(".titlebar__controls")) return;
   console.log("CALLING_START_DRAGGING");
   appWindow.startDragging().catch((err) => console.error("START_DRAGGING_ERR:", err));
+});
+
+//------------Переключение тем--------------------------------------------------------------------
+function getInitialTheme(): ThemeMode {
+  const saved = localStorage.getItem(THEME_STORAGE_KEY);
+  if (saved === "light" || saved === "dark") {
+    return saved;
+  }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function applyTheme(theme: ThemeMode): void {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem(THEME_STORAGE_KEY, theme);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const initialTheme = getInitialTheme();
+  applyTheme(initialTheme);
+
+  const styleBtn = document.getElementById("btn-style");
+  styleBtn?.addEventListener("click", () => {
+    const current: ThemeMode = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+    const next: ThemeMode = current === "dark" ? "light" : "dark";
+    applyTheme(next);
+  });
 });
