@@ -9,51 +9,58 @@
   </head>
 
   <body>
-    <div class="titlebar" data-tauri-drag-region>
-      <span class="titlebar__title" data-tauri-drag-region>Калькулятор</span>
+    <div class="app">
+      <div class="titlebar" data-tauri-drag-region>
+        <span class="titlebar__title" data-tauri-drag-region>Калькулятор</span>
 
-      <div class="titlebar__controls">
-        <button type="button" id="win-minimize" aria-label="Свернуть"></button>
-        <button type="button" id="win-close" aria-label="Закрыть"></button>
+        <div class="titlebar__controls">
+          <button type="button" id="win-minimize" aria-label="Свернуть"></button>
+          <button type="button" id="win-close" aria-label="Закрыть"></button>
+        </div>
       </div>
+
+      <main class="container">
+        <div class="toolbar">
+          <button type="button" id="btn-mode">Режим</button>
+          <button type="button" id="btn-style">Стиль</button>
+          <button type="button" id="btn-help">Справка</button>
+        </div>
+
+        <div class="display" role="region" aria-label="Окно вывода чисел">
+          <div class="display__expr" id="calc-expr"></div>
+          <div class="display__value" id="calc-display">0</div>
+        </div>
+
+        <div class="keypad" role="group" aria-label="Клавиатура калькулятора">
+          <button type="button" class="key key--fn" data-action="backspace" aria-label="Удалить последний символ">←</button>
+          <button type="button" class="key key--fn" data-action="clear-entry" aria-label="Очистить ввод">CE</button>
+          <button type="button" class="key key--fn" data-action="clear" aria-label="Сбросить всё">C</button>
+          <button type="button" class="key key--fn" data-action="negate" aria-label="Сменить знак">±</button>
+          <button type="button" class="key key--fn" data-action="sqrt" aria-label="Квадратный корень">√</button>
+
+          <button type="button" class="key key--num" data-digit="7">7</button>
+          <button type="button" class="key key--num" data-digit="8">8</button>
+          <button type="button" class="key key--num" data-digit="9">9</button>
+          <button type="button" class="key key--op" data-op="/" aria-label="Деление">/</button>
+          <button type="button" class="key key--fn" data-action="percent" aria-label="Процент">%</button>
+
+          <button type="button" class="key key--num" data-digit="4">4</button>
+          <button type="button" class="key key--num" data-digit="5">5</button>
+          <button type="button" class="key key--num" data-digit="6">6</button>
+          <button type="button" class="key key--op" data-op="*" aria-label="Умножение">X</button>
+          <button type="button" class="key key--fn" data-action="reciprocal" aria-label="Обратное значение">1/x</button>
+
+          <button type="button" class="key key--num" data-digit="1">1</button>
+          <button type="button" class="key key--num" data-digit="2">2</button>
+          <button type="button" class="key key--num" data-digit="3">3</button>
+          <button type="button" class="key key--op" data-op="-" aria-label="Вычитание">-</button>
+          <button type="button" class="key key--eq" data-action="equals" aria-label="Равно">=</button>
+
+          <button type="button" class="key key--num key--zero" data-digit="0">0</button>
+          <button type="button" class="key key--num" data-action="decimal" aria-label="Десятичная запятая">,</button>
+          <button type="button" class="key key--op" data-op="+" aria-label="Сложение">+</button>
+        </div>
+      </main>
     </div>
-
-    <main class="container">
-      <div class="toolbar">
-        <button type="button" id="btn-mode">Режим</button>
-        <button type="button" id="btn-style">Стиль</button>
-        <button type="button" id="btn-help">Справка</button>
-      </div>
-
-      <div class="keypad" role="group" aria-label="Клавиатура калькулятора">
-        <button type="button" class="key key--fn" data-action="backspace" aria-label="Удалить последний символ">←</button>
-        <button type="button" class="key key--fn" data-action="clear-entry" aria-label="Очистить ввод">CE</button>
-        <button type="button" class="key key--fn" data-action="clear" aria-label="Сбросить всё">C</button>
-        <button type="button" class="key key--fn" data-action="negate" aria-label="Сменить знак">±</button>
-        <button type="button" class="key key--fn" data-action="sqrt" aria-label="Квадратный корень">√</button>
-
-        <button type="button" class="key key--num" data-digit="7">7</button>
-        <button type="button" class="key key--num" data-digit="8">8</button>
-        <button type="button" class="key key--num" data-digit="9">9</button>
-        <button type="button" class="key key--op" data-op="/" aria-label="Деление">/</button>
-        <button type="button" class="key key--fn" data-action="percent" aria-label="Процент">%</button>
-
-        <button type="button" class="key key--num" data-digit="4">4</button>
-        <button type="button" class="key key--num" data-digit="5">5</button>
-        <button type="button" class="key key--num" data-digit="6">6</button>
-        <button type="button" class="key key--op" data-op="*" aria-label="Умножение">X</button>
-        <button type="button" class="key key--fn" data-action="reciprocal" aria-label="Обратное значение">1/x</button>
-
-        <button type="button" class="key key--num" data-digit="1">1</button>
-        <button type="button" class="key key--num" data-digit="2">2</button>
-        <button type="button" class="key key--num" data-digit="3">3</button>
-        <button type="button" class="key key--op" data-op="-" aria-label="Вычитание">-</button>
-        <button type="button" class="key key--eq" data-action="equals" aria-label="Равно">=</button>
-
-        <button type="button" class="key key--num key--zero" data-digit="0">0</button>
-        <button type="button" class="key key--num" data-action="decimal" aria-label="Десятичная запятая">,</button>
-        <button type="button" class="key key--op" data-op="+" aria-label="Сложение">+</button>
-      </div>
-    </main>
   </body>
 </html>

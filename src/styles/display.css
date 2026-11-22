@@ -1,0 +1,37 @@
+/* Окно вывода чисел над клавиатурой */
+.display {
+  container-type: size;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: clamp(68px, 12vh, 96px);
+  box-sizing: border-box;
+  margin-top: clamp(8px, 1.8vh, 14px);
+  padding: 0 clamp(10px, 2vw, 16px);
+  border: 1px solid var(--border-color, rgba(128, 128, 128, 0.35));
+  border-radius: clamp(8px, 1.5vw, 12px);
+  background-color: var(--display-bg, rgba(0, 0, 0, 0.04));
+}
+
+.display__expr {
+  display: none;
+}
+
+.display__value {
+  color: var(--display-color, #995f07);
+  font-size: 90cqh;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transform: translateY(0.12em);
+  max-width: 100%;
+}
+
+/* Матрица клавиатуры калькулятора (24 клавиши, 5 колонок) */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(6px, 1.4vw, 10px);
+  padding: clamp(8px, 1.8vw, 14px);
+}

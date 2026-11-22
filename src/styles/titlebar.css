@@ -27,16 +27,6 @@
   text-overflow: ellipsis;
 }
 
-/* Контейнер кнопок управления окном */
-.titlebar__controls {
-  grid-column: 3;
-  justify-self: end;
-  display: flex;
-  align-items: stretch;
-  height: 100%;
-  margin-right: calc(-1 * clamp(8px, 2vw, 14px));
-}
-
 /* Кнопки свернуть / развернуть / закрыть */
 .titlebar__controls button {
   display: inline-flex;
