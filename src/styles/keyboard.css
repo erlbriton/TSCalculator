@@ -14,7 +14,7 @@
   height: 100%;
   min-width: 0;
   min-height: 0;
-  border: 1px solid rgba(0, 0, 0, 0.16);
+  border: 1px solid rgba(64, 138, 208, 0.487);
   border-radius: clamp(8px, 1.2vmin, 16px);
   font-size: clamp(1rem, 2.8vmin, 2.3rem);
   font-weight: 600;
@@ -26,7 +26,7 @@
 }
 
 .key:hover {
-  filter: brightness(1.07);
+  filter: brightness(2.0);
 }
 
 .key:active {

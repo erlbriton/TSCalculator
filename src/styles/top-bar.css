@@ -44,7 +44,7 @@
 /* Подсветка кнопок панели инструментов при наведении */
 .toolbar button:hover {
   border-color: #396cd8;
-  background-color: var(--btn-hover-bg, #f0f4ff);
+  background-color: var(--btn-hover-bg, #dcae30ba);
 }
 /*Фон тулбара
 .toolbar {
