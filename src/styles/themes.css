@@ -44,7 +44,7 @@ html[data-theme="red"] {
 }
 
 body {
-  background-color: var(--bg-main);
+  background-color: transparent;
   color: var(--text-main);
 }
 

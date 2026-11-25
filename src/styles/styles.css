@@ -1,3 +1,73 @@
+/* ==========================================================================
+   Переменные тем (light, dark, green, blue, red)
+   Управляется через атрибут data-theme на корневом элементе (<html>)
+   ========================================================================== */
+
+:root,
+html[data-theme="light"] {
+  --bg-app: #f6f6f6;
+  --text-main: #0f0f0f;
+  --link-color: #646cff;
+  --link-hover: #535bf2;
+  --control-bg: #ffffff;
+  --control-text: #0f0f0f;
+  --control-hover-border: #396cd8;
+  --control-active-bg: #e8e8e8;
+  --window-border: rgba(128, 128, 128, 0.45);
+}
+
+html[data-theme="dark"] {
+  --bg-app: #2f2f2f;
+  --text-main: #f6f6f6;
+  --link-color: #7c83ff;
+  --link-hover: #24c8db;
+  --control-bg: rgba(15, 15, 15, 0.6);
+  --control-text: #ffffff;
+  --control-hover-border: #24c8db;
+  --control-active-bg: rgba(15, 15, 15, 0.41);
+  --window-border: rgba(255, 255, 255, 0.18);
+}
+
+html[data-theme="green"] {
+  --bg-app: #0f2417;
+  --text-main: #e6f5ec;
+  --link-color: #4ade80;
+  --link-hover: #86efac;
+  --control-bg: #173522;
+  --control-text: #e6f5ec;
+  --control-hover-border: #4ade80;
+  --control-active-bg: #224d32;
+  --window-border: rgba(74, 222, 128, 0.35);
+}
+
+html[data-theme="blue"] {
+  --bg-app: #0e1c2f;
+  --text-main: #e3f0ff;
+  --link-color: #60a5fa;
+  --link-hover: #93c5fd;
+  --control-bg: #162a46;
+  --control-text: #e3f0ff;
+  --control-hover-border: #60a5fa;
+  --control-active-bg: #203d66;
+  --window-border: rgba(96, 165, 250, 0.35);
+}
+
+html[data-theme="red"] {
+  --bg-app: #291114;
+  --text-main: #ffe4e8;
+  --link-color: #f87171;
+  --link-hover: #fca5a5;
+  --control-bg: #3c181d;
+  --control-text: #ffe4e8;
+  --control-hover-border: #f87171;
+  --control-active-bg: #57222a;
+  --window-border: rgba(248, 113, 113, 0.35);
+}
+
+/* ==========================================================================
+   Базовые стили и компоненты
+   ========================================================================== */
+
 /* Подсветка логотипа Vite при наведении курсора (заготовка стартового шаблона) */
 .logo.vite:hover {
   /* Внешнее свечение вокруг элемента в сине-фиолетовом оттенке */
@@ -10,7 +80,7 @@
   filter: drop-shadow(0 0 2em #2d79c7);
 }
 
-/* Корневой элемент документа: базовые настройки типографики и светлой темы */
+/* Корневой элемент документа: базовые настройки типографики */
 :root {
   /* Основное семейство шрифтов с запасными вариантами */
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -22,7 +92,7 @@
   font-weight: 400;
 
   /* Основной цвет текста и прозрачный фон для скруглённого окна */
-  color: #0f0f0f;
+  color: var(--text-main);
   background-color: transparent;
 
   /* Запрет искусственного синтеза начертаний шрифта */
@@ -84,15 +154,15 @@ a {
   /* Средняя насыщенность шрифта */
   font-weight: 500;
   /* Цвет текста ссылки */
-  color: #646cff;
+  color: var(--link-color);
   /* Наследование оформления текста от родителя */
   text-decoration: inherit;
 }
 
 /* Состояние наведения для ссылок */
 a:hover {
-  /* Более тёмный оттенок при наведении */
-  color: #535bf2;
+  /* Более яркий/контрастный оттенок при наведении */
+  color: var(--link-hover);
 }
 
 /* Заголовок первого уровня */
@@ -116,11 +186,11 @@ button {
   font-weight: 500;
   /* Наследование шрифта от родителя */
   font-family: inherit;
-  /* Цвет текста и фон элемента */
-  color: #0f0f0f;
-  background-color: #ffffff;
-  /* Плавный переход цвета рамки */
-  transition: border-color 0.25s;
+  /* Цвет текста и фон элемента из активной темы */
+  color: var(--control-text);
+  background-color: var(--control-bg);
+  /* Плавный переход цвета рамки и фона */
+  transition: border-color 0.25s, background-color 0.2s, color 0.2s;
   /* Лёгкая тень под элементом */
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
@@ -140,14 +210,14 @@ button {
 
 /* Подсветка рамки кнопки при наведении курсора */
 button:hover {
-  border-color: #396cd8;
+  border-color: var(--control-hover-border);
 }
 
 /* Состояние нажатия кнопки */
 button:active {
   /* Акцентная рамка и приглушённый фон при нажатии */
-  border-color: #396cd8;
-  background-color: #e8e8e8;
+  border-color: var(--control-hover-border);
+  background-color: var(--control-active-bg);
 }
 
 /* Отключение стандартного контура фокуса для полей ввода и кнопок */
@@ -159,32 +229,6 @@ button {
 /* Отступ справа для поля приветствия из стартового шаблона */
 #greet-input {
   margin-right: 5px;
-}
-
-/* Адаптация цветов под системную тёмную тему */
-@media (prefers-color-scheme: dark) {
-  /* Тёмные цвета текста и фона для корневого элемента */
-  :root {
-    color: #f6f6f6;
-    background-color: #2f2f2f;
-  }
-
-  /* Цвет ссылки при наведении в тёмной теме */
-  a:hover {
-    color: #24c8db;
-  }
-
-  /* Тёмный фон и светлый текст для полей ввода и кнопок */
-  input,
-  button {
-    color: #ffffff;
-    background-color: #0f0f0f98;
-  }
-
-  /* Затемнение фона кнопки при нажатии в тёмной теме */
-  button:active {
-    background-color: #0f0f0f69;
-  }
 }
 
 /* Фиксация высоты окна, прозрачный фон и скрытие полос прокрутки документа */
@@ -203,16 +247,11 @@ body {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  background-color: #f6f6f6;
+  background-color: var(--bg-app);
   border-radius: clamp(10px, 2vw, 16px);
-  border: 1px solid var(--window-border, rgba(128, 128, 128, 0.45));
+  border: 1px solid var(--window-border);
   overflow: hidden;
-}
-
-@media (prefers-color-scheme: dark) {
-  .app {
-    background-color: #2f2f2f;
-  }
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 /* Внутренний контейнер содержимого ниже строки заголовка */
