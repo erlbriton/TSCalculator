@@ -1,6 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
-import { initTheme } from "./themes/colorsSwitch";
+import { initTheme } from "./app/colorsSwitch";
 
 initTheme();
 
