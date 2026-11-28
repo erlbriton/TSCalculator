@@ -1,8 +1,10 @@
 import { invoke } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { initTheme } from "./app/colorsSwitch";
+import { loadKey } from "./app/calculatorStd/setup";
 
 initTheme();
+loadKey();
 
 const appWindow = getCurrentWindow();
 
